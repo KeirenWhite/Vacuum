@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 500f;
-    public float jumpForce = 300f;
+    //public float jumpForce = 300f;
     private Rigidbody2D rb;
-    [HideInInspector] public bool isGrounded;
+    //[HideInInspector] public bool isGrounded;
     
     
     void Start()
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Jump();
+       
     }
     void FixedUpdate()
     {
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         while (collision.gameObject.CompareTag("Ground"))
         {
@@ -53,9 +53,9 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
         }
-    }
+    }*/
 
-    public void Jump()
+    /*public void Jump()
     {
         if (!isGrounded)
             Debug.Log("Not Grounded!");
@@ -66,5 +66,5 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(new Vector2(0f, jumpForce));
             }
         }
-    }
+    }*/
 }

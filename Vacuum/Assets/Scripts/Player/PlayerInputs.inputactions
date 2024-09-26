@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "Warp",
                     "type": "Button",
                     "id": "c1185aea-1b37-4456-9f4c-1b586c6a8a07",
                     "expectedControlType": "Button",
@@ -83,7 +83,35 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "Warp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Launch",
+            "id": "5aeb6faf-27db-4f2c-99aa-8d319e53153c",
+            "actions": [
+                {
+                    "name": "Release",
+                    "type": "Button",
+                    "id": "c895b043-af9f-4c8e-bf11-4bf2245ef374",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9ecf1615-de89-4f12-927e-724341cebeb6",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Release",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
