@@ -7,6 +7,15 @@ TagManager:
   - Ground
   - Wall
   - Ball
+  - Pivot1
+  - Rotate1
+  - Rotate2
+  - Rotate3
+  - Rotate4
+  - Rotate5
+  - Rotate6
+  - Rotate7
+  - Rotate8
   layers:
   - Default
   - TransparentFX
