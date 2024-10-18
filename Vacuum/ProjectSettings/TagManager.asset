@@ -16,6 +16,7 @@ TagManager:
   - Rotate6
   - Rotate7
   - Rotate8
+  - Block
   layers:
   - Default
   - TransparentFX

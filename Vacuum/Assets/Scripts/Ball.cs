@@ -8,6 +8,10 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rb;
     private int launchCounter;
     private Camera mainCamera;
+    private int bounceCounter = 0;
+    public float bounceMultiplierMultiplier = 1.05f;
+    public int bounceCap = 8;
+    
 
     void Start()
     {
@@ -23,6 +27,7 @@ public class Ball : MonoBehaviour
     private void Update()
     {
         Launch();
+
     }
 
     private void FixedUpdate()
@@ -30,20 +35,30 @@ public class Ball : MonoBehaviour
         CheckBorders();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) //clamp velocity at some point
     {
         // Check if the collision is with an object tagged as "Wall"
         if (collision.gameObject.CompareTag("Player"))
         {
             // Calculate the reflection vector based on the collision normal
             Vector2 incomingVelocity = rb.velocity;
-            Vector2 reflection = Vector2.Reflect(incomingVelocity, collision.contacts[0].normal);
+            //Vector2 reflection = Vector2.Reflect(incomingVelocity, collision.contacts[0].normal);
 
             // Apply the bounce multiplier
-            rb.velocity = reflection * bounceMultiplier;
+            rb.velocity = incomingVelocity * bounceMultiplier;
+
+            bounceCounter++;
+            Debug.Log(bounceCounter.ToString());
+
+            Bounces();
         }
+        /*else
+        {
+            ResetBall();
+        }*/
     }
 
+   
     private void Launch()
     {
         if (launchCounter == 0)
@@ -77,5 +92,16 @@ public class Ball : MonoBehaviour
         launchCounter = 0;
     }
 
+    private void Bounces()
+    {
+        if(bounceCounter == bounceCap) //1.27628
+        {
+            bounceMultiplier *= bounceMultiplierMultiplier;
+        }
+        else if(bounceCounter == 10)
+        {
+            bounceMultiplier *= 1f;
+        }
+    }
 }
     

@@ -53,108 +53,79 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
-        
-        if (!col.gameObject.CompareTag("Rotate1") || leftSide == true)
+
+        if (col.gameObject.CompareTag("Rotate1") && leftSide != true)
         {
-            return;
-        }
-        else
-        {
-            Debug.Log("bruh");
+            //Debug.Log("bruh");
             Pivot1();
             leftSide = true;
             bottomSide = false;
             topSide = false;
             rightSide = false;
-            
-
         }
 
-        if (!col.gameObject.CompareTag("Rotate2") || bottomSide == true)
+        else if (col.gameObject.CompareTag("Rotate2") && bottomSide != true)
         {
-            return;
-        }
-        else
-        {
-            
             Pivot2();
             bottomSide = true;
             leftSide = false;
             topSide = false;
             rightSide = false;
         }
-        if (!col.gameObject.CompareTag("Rotate3") || bottomSide == true)
+
+
+        else if (col.gameObject.CompareTag("Rotate3") && leftSide != true)
         {
-            return;         
-        }
-        else
-        {
-            
             Pivot3();
             leftSide = true;
             bottomSide = false;
             topSide = false;
             rightSide = false;
         }
-        if (!col.gameObject.CompareTag("Rotate4") || topSide == true)
+
+        else if (col.gameObject.CompareTag("Rotate4") && topSide != true)
         {
-            return;       
-        }
-        else
-        {
-            Debug.Log("34434");
+            //Debug.Log("34434");
             Pivot4();
             topSide = true;
             leftSide = false;
             bottomSide = false;
             rightSide = false;
         }
-        if (!col.gameObject.CompareTag("Rotate5") || rightSide == true)
+
+            if (col.gameObject.CompareTag("Rotate5") && rightSide != true)
         {
-            return;    
-        }
-        else
-        {
-            Debug.Log("collision");
+            //Debug.Log("collision");
             Pivot5();
             rightSide = true;
             leftSide = false;
             bottomSide = false;
             topSide = false;
         }
-        if (!col.gameObject.CompareTag("Rotate6") || bottomSide == true)
+       
+        else if (col.gameObject.CompareTag("Rotate6") && bottomSide != true)
         {
-            return;
-        }
-        else
-        {
-            Debug.Log("collision");
+            //Debug.Log("collision");
             Pivot6();
             bottomSide = true;
             leftSide = false;
             topSide = false;
             rightSide = false;
         }
-        if (!col.gameObject.CompareTag("Rotate7") || topSide == true)
+       
+        else if (col.gameObject.CompareTag("Rotate7") && topSide != true)
         {
-            return;                
-        }
-        else
-        {
-            Debug.Log("collision");
+            //Debug.Log("collision");
             Pivot7();
             topSide = true;
             leftSide = false;
             bottomSide = false;
             rightSide = false;
         }
-        if (!col.gameObject.CompareTag("Rotate8") || rightSide == true)
+      
+        else if (col.gameObject.CompareTag("Rotate8") && rightSide != true)
         {
-            return;
-        }
-        else
-        {
-            Debug.Log("collision");
+            //Debug.Log("collision");
             Pivot8();
             rightSide = true;
             leftSide = false;
