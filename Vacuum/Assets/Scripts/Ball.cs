@@ -11,7 +11,9 @@ public class Ball : MonoBehaviour
     private int bounceCounter = 0;
     public float bounceMultiplierMultiplier = 1.05f;
     public int bounceCap = 8;
-    
+    public float launchSpeed = 5f;
+    public float maxSpeed = 12f;
+    private Vector2 lastVelocity;
 
     void Start()
     {
@@ -20,6 +22,8 @@ public class Ball : MonoBehaviour
 
        
         mainCamera = Camera.main;
+
+        lastVelocity = rb.velocity;
         
         
     }
@@ -33,6 +37,21 @@ public class Ball : MonoBehaviour
     private void FixedUpdate()
     {
         CheckBorders();
+
+        float currentSpeed = rb.velocity.magnitude;
+        float lastSpeed = lastVelocity.magnitude;
+
+        if (currentSpeed > maxSpeed)
+        {
+            // Cap the velocity to the max speed while keeping the same direction
+            rb.velocity = rb.velocity.normalized * maxSpeed;
+        }
+        if (currentSpeed < lastSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * lastSpeed;
+        }
+
+        lastVelocity = rb.velocity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision) //clamp velocity at some point
@@ -47,25 +66,40 @@ public class Ball : MonoBehaviour
             // Apply the bounce multiplier
             rb.velocity = incomingVelocity * bounceMultiplier;
 
+            if(Mathf.Abs(rb.velocity.x) < 0.5f)
+            {
+                rb.velocity = new Vector2(-Mathf.Sign(rb.velocity.x) * 2, rb.velocity.y);
+            }
+            if (Mathf.Abs(rb.velocity.y) < 0.5f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, -Mathf.Sign(rb.velocity.y) * 2);
+            }
+
             bounceCounter++;
             Debug.Log(bounceCounter.ToString());
 
             Bounces();
         }
-        /*else
+        else if (collision.gameObject.CompareTag("Block"))
         {
-            ResetBall();
-        }*/
+            //ResetBall();
+        }
+        else
+        {
+            //ResetBall();
+        }
     }
 
    
     private void Launch()
     {
+        float angle = Random.Range(0f, 360f);
+        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
         if (launchCounter == 0)
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                rb.velocity = new Vector2(2f, -5f);
+                rb.velocity = direction * launchSpeed;
                 launchCounter++;
             }
         }
