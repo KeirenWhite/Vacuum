@@ -57,12 +57,13 @@ public class Ball : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) //clamp velocity at some point
     {
         // Check if the collision is with an object tagged as "Wall"
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Block"))
         {
-            // Calculate the reflection vector based on the collision normal
+           // Calculate the reflection vector based on the collision normal
             Vector2 incomingVelocity = rb.velocity;
             //Vector2 reflection = Vector2.Reflect(incomingVelocity, collision.contacts[0].normal);
 
+<<<<<<< Updated upstream
             // Apply the bounce multiplier
             rb.velocity = incomingVelocity * bounceMultiplier;
 
@@ -87,6 +88,10 @@ public class Ball : MonoBehaviour
         else
         {
             //ResetBall();
+=======
+            // Apply the bounce multiplier*/
+            rb.velocity = incomingVelocity * bounceMultiplier;
+>>>>>>> Stashed changes
         }
     }
 

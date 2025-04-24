@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Wall
   - Ball
+<<<<<<< Updated upstream
   - Pivot1
   - Rotate1
   - Rotate2
@@ -16,6 +17,8 @@ TagManager:
   - Rotate6
   - Rotate7
   - Rotate8
+=======
+>>>>>>> Stashed changes
   - Block
   layers:
   - Default

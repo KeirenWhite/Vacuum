@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 500f;
+<<<<<<< Updated upstream
     private Rigidbody2D rb;
     public float rotationDegrees = 90f;
     public float rotationDegrees2 = 90f;
@@ -24,6 +25,13 @@ public class PlayerMovement : MonoBehaviour
     // public float rotationSpeed = 2f;
 
     //PLAYER STATES!!!!!!!!!!!!!!!
+=======
+    
+    private Rigidbody2D rb;
+   
+    
+    
+>>>>>>> Stashed changes
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
     }
+<<<<<<< Updated upstream
     private void OnCollisionEnter2D(Collision2D col)
     {
 
@@ -165,4 +174,9 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.Rotate(0, 0, rotationDegrees8);
     }
+=======
+
+   
+    
+>>>>>>> Stashed changes
 }
